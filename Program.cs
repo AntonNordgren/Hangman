@@ -60,7 +60,7 @@ namespace Hangman
             Console.Write("Hidden word: ");
             foreach (char c in hiddenWord)
             {
-                Console.Write(c + "");
+                Console.Write(c);
             }
 
             Console.WriteLine();
