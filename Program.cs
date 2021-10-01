@@ -18,17 +18,6 @@ namespace Hangman
         private static StringBuilder wrongGuesses;
         private static List<string> listOfGuesses;
 
-        //private static void ReadFromFile()
-        //{
-        //    List<string> lines = File.ReadAllLines(path).ToList();
-        //    List<string> word = new List<string>();
-
-        //    foreach (var line in lines)
-        //    {
-        //        Console.WriteLine(line);
-        //    }
-        //}
-
         public static void Init()
         {
             path = "words.txt";
@@ -50,7 +39,7 @@ namespace Hangman
         private static string GenerateWord(string filePath)
         {
             Random rnd = new Random();
-            List<string> lines = File.ReadAllText(filePath).Split(", ").ToList();
+            List<string> lines = File.ReadAllText(filePath).Split(",").ToList();
 
             return lines[rnd.Next(lines.Count)].ToUpper();
         }
@@ -238,6 +227,7 @@ namespace Hangman
                         if (playAgain == "n")
                         {
                             programRunning = false;
+                            Console.WriteLine("Exiting...");
                             break;
                         }
                         else if (playAgain == "y")
