@@ -1,0 +1,14 @@
+C:\Users\Anton\source\repos\Hangman\bin\Debug\netcoreapp3.1\Hangman.exe
+C:\Users\Anton\source\repos\Hangman\bin\Debug\netcoreapp3.1\Hangman.deps.json
+C:\Users\Anton\source\repos\Hangman\bin\Debug\netcoreapp3.1\Hangman.runtimeconfig.json
+C:\Users\Anton\source\repos\Hangman\bin\Debug\netcoreapp3.1\Hangman.runtimeconfig.dev.json
+C:\Users\Anton\source\repos\Hangman\bin\Debug\netcoreapp3.1\Hangman.dll
+C:\Users\Anton\source\repos\Hangman\bin\Debug\netcoreapp3.1\Hangman.pdb
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.csproj.AssemblyReference.cache
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.AssemblyInfoInputs.cache
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.AssemblyInfo.cs
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.csproj.CoreCompileInputs.cache
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.dll
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.pdb
+C:\Users\Anton\source\repos\Hangman\obj\Debug\netcoreapp3.1\Hangman.genruntimeconfig.cache
