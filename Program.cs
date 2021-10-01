@@ -8,6 +8,7 @@ namespace Hangman
 {
     static class Game
     {
+        private static string path;
         private static bool programRunning;
         private static string playAgain;
         private static string theWord;
@@ -17,22 +18,22 @@ namespace Hangman
         private static StringBuilder wrongGuesses;
         private static List<string> listOfGuesses;
 
-        private static void readFromFile()
-        {
-            string filePath = "words.txt";
-            List<string> lines = File.ReadAllLines(filePath).ToList();
-            List<string> word = new List<string>();
+        //private static void ReadFromFile()
+        //{
+        //    List<string> lines = File.ReadAllLines(path).ToList();
+        //    List<string> word = new List<string>();
 
-            foreach (var line in lines)
-            {
-                Console.WriteLine(line);
-            }
-        }
+        //    foreach (var line in lines)
+        //    {
+        //        Console.WriteLine(line);
+        //    }
+        //}
 
         public static void Init()
         {
+            path = "words.txt";
             programRunning = true;
-            theWord = GenerateWord("words.txt");
+            theWord = GenerateWord(path);
             hiddenWord = new char[theWord.Length];
 
             for (int i = 0; i < hiddenWord.Length; i++)
@@ -46,10 +47,10 @@ namespace Hangman
             Start();
 
         }
-        private static string GenerateWord(string path)
+        private static string GenerateWord(string filePath)
         {
             Random rnd = new Random();
-            List<string> lines = File.ReadAllText(path).Split(", ").ToList();
+            List<string> lines = File.ReadAllText(filePath).Split(", ").ToList();
 
             return lines[rnd.Next(lines.Count)].ToUpper();
         }
@@ -110,7 +111,7 @@ namespace Hangman
                 Console.Write("Guess a character or word: ");
                 input = Console.ReadLine();
 
-                if(input != "" && input.All(Char.IsLetter))
+                if (input != "" && input.All(Char.IsLetter))
                 {
                     return input.ToUpper();
                 }
@@ -122,10 +123,10 @@ namespace Hangman
             }
         }
 
-        private static void reset()
+        private static void Reset()
         {
             programRunning = true;
-            theWord = GenerateWord("words.txt");
+            theWord = GenerateWord(path);
             hiddenWord = new char[theWord.Length];
 
             for (int i = 0; i < hiddenWord.Length; i++)
@@ -140,7 +141,7 @@ namespace Hangman
 
         private static void Start()
         {
-            while(programRunning)
+            while (programRunning)
             {
                 while (true)
                 {
@@ -150,9 +151,7 @@ namespace Hangman
                         Console.WriteLine("Game Over!");
                         Console.WriteLine("You have no guesses left!");
                         Console.WriteLine("The right word was: " + theWord);
-
-                        Console.Write("Enter any key to continue: ");
-                        Console.ReadKey();
+                        Console.WriteLine();
                         break;
                     }
 
@@ -176,59 +175,65 @@ namespace Hangman
                                     }
                                 }
 
+                                guessesLeft--;
                             }
                             else
                             {
                                 wrongGuesses.Append(userInput + ", ");
-                                Console.WriteLine("The character is not in the word.");
-                                Console.WriteLine("Enter any key to continue: ");
-                                Console.ReadKey();
+                                guessesLeft--;
                             }
 
-                            if(FoundWordCheck(hiddenWord))
+                            if (FoundWordCheck(hiddenWord))
                             {
                                 Console.WriteLine("You found the word!");
                                 Console.WriteLine("The right word was: " + theWord);
-                                Console.ReadKey();
+                                Console.WriteLine();
                                 break;
                             }
-                    
+
                         }
                         else
                         {
-                            if(userInput == theWord )
+                            if (userInput.Length != theWord.Length)
                             {
-                                Console.WriteLine("You found the word!");
-                                Console.WriteLine("Enter any key to continue: ");
-                                Console.ReadKey();
-                                break;
-                            }
-                            else
-                            {
-                                wrongGuesses.Append(userInput + ", ");
-                                Console.WriteLine("Wrong word");
+                                Console.WriteLine("Your guess is not the same length as the hidden word");
+                                Console.WriteLine();
                                 Console.Write("Enter any key to continue: ");
                                 Console.ReadKey();
                             }
+                            else
+                            {
+                                if (userInput == theWord)
+                                {
+                                    Console.WriteLine("You found the word!");
+                                    Console.WriteLine("The right word was: " + theWord);
+                                    Console.WriteLine();
+                                    break;
+                                }
+                                else
+                                {
+                                    wrongGuesses.Append(userInput + ", ");
+                                    guessesLeft--;
+                                }
+                            }
 
                         }
-
-                        guessesLeft--;
                     }
                     else
                     {
+                        Console.WriteLine();
                         Console.WriteLine("You've already guessed that.");
-                        Console.WriteLine("Enter any key to continue: ");
+                        Console.Write("Enter any key to continue: ");
                         Console.ReadKey();
                     }
                 }
 
-                while(true)
+                while (true)
                 {
                     Console.Write("Do you want to play again?: (y for yes or n for no): ");
                     playAgain = Console.ReadLine();
 
-                    if(playAgain == "y" || playAgain == "n")
+                    if (playAgain == "y" || playAgain == "n")
                     {
                         if (playAgain == "n")
                         {
@@ -237,7 +242,7 @@ namespace Hangman
                         }
                         else if (playAgain == "y")
                         {
-                            reset();
+                            Reset();
                             break;
                         }
                     }
