@@ -124,8 +124,8 @@ namespace Hangman
             }
 
             guessesLeft = 10;
-            wrongGuesses = new StringBuilder();
-            listOfGuesses = new List<string>();
+            wrongGuesses.Clear();
+            listOfGuesses.Clear();
         }
 
         private static void Start()
