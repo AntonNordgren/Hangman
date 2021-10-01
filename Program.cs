@@ -114,6 +114,7 @@ namespace Hangman
 
         private static void Reset()
         {
+            programRunning = true;
             theWord = GenerateWord(path);
             hiddenWord = new char[theWord.Length];
 
